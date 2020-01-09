@@ -1,0 +1,41 @@
+<%= form_with(model: provider, local: true) do |f| %>
+  <% if provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+      <ul>
+        <% provider.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.fields_for :loans do |ff| %>
+    <div class="field">
+      <%= ff.label :name %>
+      <%= ff.text_field :name %>
+    </div>
+    <div class="field">
+      <%= ff.label :principle %>
+      <%= ff.number_field :principle %>
+    </div>
+    <div class="field">
+      <%= ff.label :interest %>
+      <%= ff.text_field :interest %>
+    </div>
+    <div class="field">
+      <%= ff.label :payment, 'Current Payment' %>
+      <%= ff.number_field :payment %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
