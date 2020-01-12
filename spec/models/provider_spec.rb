@@ -10,17 +10,53 @@ describe Provider, type: :model do
 
 	context 'validations' do
 
-		context 'length' do
+		context 'name' do
 
-			it 'should be invalid if not correct length' do
-				provider.name = 'a'
-				expect(provider).to_not be_valid
+			context 'presence' do
 
-				provider.name = 'x'*150
-				expect(provider).to_not be_valid
+				it 'should be invalid if not present' do
+					provider.name = nil
+					expect(provider).to_not be_valid
 
-				provider.name = 'Test Name'
-				expect(provider).to be_valid
+					provider.name = 'Test Name'
+					expect(provider).to be_valid
+				end
+
+			end
+
+			context 'length' do
+
+				it 'should be invalid if not correct length' do
+					provider.name = 'a'
+					expect(provider).to_not be_valid
+
+					provider.name = 'x'*150
+					expect(provider).to_not be_valid
+
+					provider.name = 'Test Name'
+					expect(provider).to be_valid
+				end
+
+			end
+
+		end
+
+		context 'loans' do
+
+			context 'number of loans' do
+
+				it 'should be invalid if more than 10 loans exist for this provider' do
+					expect(provider.loans.size).to eq(2)
+					expect(provider).to be_valid
+
+					FactoryBot.create_list(:loan, 10, provider: provider)
+					expect(provider.loans.size).to eq(12)
+					expect(provider).to_not be_valid
+
+					# custom validation error message
+					expect(provider.errors.messages[:base]).to match_array(['A single provider can only have up to 10 loans.'])
+				end
+
 			end
 
 		end
