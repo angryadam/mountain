@@ -33,3 +33,7 @@ yarn-debug.log*
 # Jetbrains stuff
 .idea/
 .DS_Store
+
+# env files
+app.env
+db.env
