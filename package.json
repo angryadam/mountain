@@ -2,11 +2,13 @@
   "name": "project",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.0",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "apexcharts": "^3.12.0",
+    "bulma": "^0.8.0",
     "jquery": "^3.4.1",
     "turbolinks": "^5.2.0"
   },

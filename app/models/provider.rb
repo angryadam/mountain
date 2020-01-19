@@ -1,5 +1,6 @@
 class Provider < ApplicationRecord
-	has_many :loans
+	belongs_to :user
+	has_many :loans, dependent: :destroy
 	accepts_nested_attributes_for :loans, reject_if: :all_blank, allow_destroy: true
 
 	validates :name, presence: true, length: { minimum: 2, maximum: 100 }
