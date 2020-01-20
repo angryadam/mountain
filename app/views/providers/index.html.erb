@@ -2,31 +2,12 @@
 
 <h1>Providers</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @providers.each do |provider| %>
-    <tr>
-      <td><%= provider.name %></td>
-      <td><%= link_to 'Show', provider %></td>
-      <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
-      <td><%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
 <% @providers.each do |provider| %>
+  <%= provider.name %>
+  <%= link_to 'Edit', edit_provider_path(provider), class: 'button is-info' %>
+  <%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
   <%= area_chart(provider.chart_payoff_data,
                  {**{ curve: "straight", markers: { size: 0 },
                       data_labels: { enabled: false }, theme: 'palette8' }}) %>
 <% end %>
 <br>
-
-<%= link_to 'New Provider', new_provider_path %>
