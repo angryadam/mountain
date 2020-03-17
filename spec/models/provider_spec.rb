@@ -45,16 +45,16 @@ describe Provider, type: :model do
 
 			context 'number of loans' do
 
-				it 'should be invalid if more than 10 loans exist for this provider' do
+				it 'should be invalid if more than 5 loans exist for this provider' do
 					expect(provider.loans.size).to eq(2)
 					expect(provider).to be_valid
 
-					FactoryBot.create_list(:loan, 10, provider: provider)
-					expect(provider.loans.size).to eq(12)
+					FactoryBot.create_list(:loan, 5, provider: provider)
+					expect(provider.loans.size).to eq(7)
 					expect(provider).to_not be_valid
 
 					# custom validation error message
-					expect(provider.errors.messages[:base]).to match_array(['A single provider can only have up to 10 loans.'])
+					expect(provider.errors.messages[:base]).to match_array(['A single provider can only have up to 5 loans.'])
 				end
 
 			end

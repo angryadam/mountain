@@ -3,6 +3,8 @@ class Provider < ApplicationRecord
 	has_many :loans, dependent: :destroy
 	accepts_nested_attributes_for :loans, reject_if: :all_blank, allow_destroy: true
 
+	LOAN_LIMIT_NUM = 5
+
 	validates :name, presence: true, length: { minimum: 2, maximum: 100 }
 	validate :loans_per_provider_limit
 
@@ -15,6 +17,6 @@ class Provider < ApplicationRecord
 	private
 
 	def loans_per_provider_limit
-		errors.add(:base, 'A single provider can only have up to 10 loans.') if loans.size > 10
+		errors.add(:base, "A single provider can only have up to #{LOAN_LIMIT_NUM} loans.") if loans.size > LOAN_LIMIT_NUM
 	end
 end

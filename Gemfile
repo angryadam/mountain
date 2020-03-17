@@ -23,8 +23,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Charting library for displaying data in JS
 gem 'apexcharts'
-gem "clearance"
+
+# User authentication
+gem 'clearance'
+
+# Ajax-ify nested forms
+gem 'cocoon'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

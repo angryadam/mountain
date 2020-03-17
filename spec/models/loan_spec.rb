@@ -141,6 +141,20 @@ describe Loan, type: :model do
 
     end
 
+    context 'upside down' do
+
+      it 'should be invalid when monthly payment does not decrease principle' do
+        loan.interest = 20.0
+        loan.payment = 5
+        loan.principle = 1000
+        expect(loan).to_not be_valid
+
+        loan.payment = 500
+        expect(loan).to be_valid
+      end
+
+    end
+
   end
 
   context '#payoff data' do

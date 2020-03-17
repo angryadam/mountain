@@ -12,30 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :name, class: 'label' %>
+    <div class="control">
+    <%= f.text_field :name, class: 'input' %>
+    </div>
   </div>
 
-  <%= f.fields_for :loans do |ff| %>
-    <div class="field">
-      <%= ff.label :name %>
-      <%= ff.text_field :name %>
-    </div>
-    <div class="field">
-      <%= ff.label :principle %>
-      <%= ff.number_field :principle %>
-    </div>
-    <div class="field">
-      <%= ff.label :interest %>
-      <%= ff.text_field :interest %>
-    </div>
-    <div class="field">
-      <%= ff.label :payment, 'Current Payment' %>
-      <%= ff.number_field :payment %>
-    </div>
+  <div class="columns">
+    <span class="column is-2">Name</span>
+    <span class="column is-2">Principle</span>
+    <span class="column is-2">Interest</span>
+    <span class="column is-2">Payment</span>
+    <span class="column is-2"></span>
+  </div>
+  <%= f.fields_for :loans do |loan| %>
+    <%= render 'loan_fields', f: loan %>
   <% end %>
 
-  <div class="actions">
+  <div class='buttons'>
+    <%= link_to_add_association f, :loans, class: 'button is-link' do %>
+      <i class="fas fa-plus"></i>
+    <% end %>
     <%= f.submit class: 'button is-primary' %>
   </div>
 <% end %>
