@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Providers</h1>
-
 <% @providers.each do |provider| %>
-  <%= provider.name %>
+	<h4 class="title is-4"><%= provider.name %></h4>
+
   <%= link_to 'Edit', edit_provider_path(provider), class: 'button is-info' %>
-  <%= link_to 'Destroy', provider, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+  <%= link_to provider, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' do %>
+		<i class="fas fa-trash"></i>
+	<% end %>
   <%= area_chart(provider.chart_payoff_data,
                  {**{ curve: "straight", markers: { size: 0 },
                       data_labels: { enabled: false }, theme: 'palette8' }}) %>

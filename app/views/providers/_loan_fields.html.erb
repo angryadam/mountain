@@ -1,0 +1,20 @@
+<div class='columns nested-fields'>
+	<div class="column is-2">
+		<%= f.text_field :name, class: 'input' %>
+	</div>
+	<div class="column is-2">
+		<%= f.number_field :principle, class: 'input' %>
+	</div>
+	<div class="column is-2">
+		<%#= f.label :interest %>
+		<%= f.text_field :interest, class: 'input' %>
+	</div>
+	<div class="column is-2">
+		<%= f.number_field :payment, class: 'input' %>
+	</div>
+	<div class="column is-2">
+		<%= link_to_remove_association f do %>
+			<i class="fas fa-times"></i>
+		<% end %>
+	</div>
+</div>

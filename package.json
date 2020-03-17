@@ -9,6 +9,7 @@
     "@rails/webpacker": "4.2.2",
     "apexcharts": "^3.12.0",
     "bulma": "^0.8.0",
+    "cocoon": "github:nathanvda/cocoon#c24ba53",
     "jquery": "^3.4.1",
     "turbolinks": "^5.2.0"
   },
