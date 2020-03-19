@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Provider, type: :model do
 
-	let!(:provider) { FactoryBot.create(:provider, :with_loans) }
+	let!(:provider) { FactoryBot.create(:provider) }
 
 	it 'has a valid factory' do
 		expect(provider).to be_valid
@@ -49,7 +49,7 @@ describe Provider, type: :model do
 					expect(provider.loans.size).to eq(2)
 					expect(provider).to be_valid
 
-					FactoryBot.create_list(:loan, 5, provider: provider)
+					5.times { provider.loans << create(:loan, provider: provider) }
 					expect(provider.loans.size).to eq(7)
 					expect(provider).to_not be_valid
 
@@ -67,18 +67,17 @@ describe Provider, type: :model do
 
 		context 'creating loan payoff data' do
 
-			before(:each) { provider.loans.update_all(principle: 12, interest: 10.0, payment: 2) }
+			before(:each) { provider.loans.update(principle: 12, interest: 2.0, payment: 5) }
 
 			it 'should return properly formatted data' do
 				expected = [{name: provider.loans.first.name,
-				             data: [[Time.zone.today, 12.0],
-				                    [Time.zone.today + 3.months, 4.3],
-				                    [Time.zone.today + 6.months, 0]]},
+				             data: [[Time.zone.today.beginning_of_month, 12.0],
+				                    [Time.zone.today.beginning_of_month + 1.months, 2.03],
+				                    [Time.zone.today.beginning_of_month + 2.months, 0]]},
 				            {name: provider.loans.second.name,
-				             data: [[Time.zone.today, 12.0],
-				                    [Time.zone.today + 3.months, 4.3],
-				                    [Time.zone.today + 6.months, 0]]}]
-
+				             data: [[Time.zone.today.beginning_of_month, 12.0],
+				                    [Time.zone.today.beginning_of_month + 1.months, 2.03],
+				                    [Time.zone.today.beginning_of_month + 2.months, 0]]}]
 				expect(provider.chart_payoff_data).to match_array(expected)
 			end
 

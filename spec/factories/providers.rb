@@ -3,11 +3,11 @@ FactoryBot.define do
 		association :user
 
 		sequence(:name) { |n| "Test Provider #{n}" }
-	end
 
-	trait :with_loans do
-		after :build do |provider|
+		before(:create) do |provider|
+			provider.save(validate: false)
 			2.times { create(:loan, provider: provider) }
 		end
+
 	end
 end

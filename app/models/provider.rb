@@ -6,6 +6,7 @@ class Provider < ApplicationRecord
 	LOAN_LIMIT_NUM = 5
 
 	validates :name, presence: true, length: { minimum: 2, maximum: 100 }
+	validates :loans, presence: true
 	validate :loans_per_provider_limit
 
 	def chart_payoff_data

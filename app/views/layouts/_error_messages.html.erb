@@ -1,0 +1,5 @@
+<% if obj.try(:errors) && obj.errors.any? %>
+	<div class="<%= flash_class('error') %>">
+		<%= obj.errors.full_messages.join(', ') %>
+	</div>
+<% end %>

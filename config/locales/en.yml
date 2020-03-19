@@ -30,4 +30,13 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      provider:
+        loans: ""
+    errors:
+      models:
+        provider:
+          attributes:
+            loans:
+              blank: "You haven't added any loans!"
