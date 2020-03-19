@@ -1,14 +1,21 @@
-<p id="notice"><%= notice %></p>
-
 <% @providers.each do |provider| %>
-	<h4 class="title is-4"><%= provider.name %></h4>
+	<div class="provider-container">
+		<h4 class="title is-4"><%= provider.name %></h4>
 
-  <%= link_to 'Edit', edit_provider_path(provider), class: 'button is-info' %>
-  <%= link_to provider, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' do %>
-		<i class="fas fa-trash"></i>
-	<% end %>
-  <%= area_chart(provider.chart_payoff_data,
-                 {**{ curve: "straight", markers: { size: 0 },
-                      data_labels: { enabled: false }, theme: 'palette8' }}) %>
+		<%= link_to 'Edit', edit_provider_path(provider), class: 'button is-info' %>
+		<%= link_to provider, data: { behavior: 'delete' }, class: 'button is-danger' do %>
+			<i class="fas fa-trash"></i>
+		<% end %>
+		<%= area_chart(provider.chart_payoff_data,
+		               {**{ curve: "straight", markers: { size: 0 },
+		                    noData: { text: 'No Data',
+		                              style: { color: 'black',
+		                                       fontSize: '1.5em',
+		                                       fontFamily: ['BlinkMacSystemFofnt', '-apple-system', 'Segoe UI',
+		                                                    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+		                                                    'Droid Sans', 'Helvetica Neue', 'Helvetica',
+		                                                    'Arial', 'sans-serif'] } },
+		                    data_labels: { enabled: false }, theme: 'palette8' }}) %>
+	</div>
 <% end %>
 <br>
