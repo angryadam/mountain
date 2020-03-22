@@ -1,0 +1,9 @@
+#clearance .column.is-two-fifths {
+  @include white-card-with-shadow;
+
+  .other-links {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2em;
+  }
+}

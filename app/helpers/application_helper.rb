@@ -9,4 +9,10 @@ module ApplicationHelper
     end
   end
 
+  def format_date(date)
+    return unless date
+
+    date.in_time_zone.strftime('%F')
+  end
+
 end

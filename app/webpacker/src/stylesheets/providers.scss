@@ -1,0 +1,44 @@
+#provider-index {
+  .provider-container {
+    @include white-card-with-shadow;
+
+    .title {
+      text-decoration: underline solid transparent;
+      transition: text-decoration 0.1s ease-in;
+      &:hover {
+        text-decoration: underline solid Currentcolor;
+      }
+    }
+  }
+  .payoff-info-container{
+    @include white-card-with-shadow;
+    height: 100%;
+    margin-left: 0.5em;
+
+    .payoff-name-title {
+      margin-bottom: 0.25em;
+    }
+
+    .payoff-date {
+      margin-bottom: 1em;
+    }
+  }
+}
+
+#provider-new, #provider-edit {
+  .is-four-fifths {
+    @include white-card-with-shadow;
+  }
+
+  #provider-name-field {
+    max-width: 33%;
+  }
+
+  .subtitle {
+    margin-bottom: 0.5em;
+  }
+
+  #form-labels-container{
+    margin-bottom: 0;
+  }
+}

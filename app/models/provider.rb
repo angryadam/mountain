@@ -9,6 +9,8 @@ class Provider < ApplicationRecord
 	validates :loans, presence: true
 	validate :loans_per_provider_limit
 
+	default_scope { order(name: :asc) }
+
 	def chart_payoff_data
 		loans.map do |loan|
 			{ name: loan.name.titleize, data: loan.payoff_data }

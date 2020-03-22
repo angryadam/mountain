@@ -6,6 +6,8 @@ class Loan < ApplicationRecord
   validates :principle, :payment, numericality: { greater_than: 0, less_than: 10_000_000 }
   validates :interest, numericality: { greater_than: 0, less_than: 25.0 }
 
+  default_scope { order(name: :asc) }
+
   validate :not_upside_down
 
   def payoff_data

@@ -1,0 +1,24 @@
+<%= form_with scope: :session, url: session_path do |form| %>
+  <div class="text-field field">
+    <div class="control">
+    <%= form.text_field :email, type: 'email', class: 'input', placeholder: 'email' %>
+    </div>
+  </div>
+
+  <div class="password-field field">
+    <div class="control">
+    <%= form.password_field :password, type: 'password', class: 'input', placeholder: 'password' %>
+    </div>
+  </div>
+
+  <div class="submit-field field">
+    <%= form.submit class: 'button is-primary' %>
+  </div>
+
+  <div class="other-links">
+    <% if Clearance.configuration.allow_sign_up? %>
+      <%= link_to t(".sign_up"), sign_up_path %>
+    <% end %>
+    <%= link_to t(".forgot_password"), new_password_path %>
+  </div>
+<% end %>

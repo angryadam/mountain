@@ -3,18 +3,22 @@
 <%= form_with model: provider do |f| %>
   <div class="field">
     <%= f.label :name, class: 'label' %>
-    <div class="control">
-      <%= f.text_field :name, class: 'input' %>
+    <div id="provider-name-field" class="control">
+      <%= f.text_field :name, class: 'input', maxlength: 100 %>
     </div>
   </div>
 
-  <div class="columns">
-    <span class="column is-2">Name</span>
-    <span class="column is-2">Principle</span>
-    <span class="column is-2">Interest</span>
-    <span class="column is-2">Payment</span>
+  <br>
+
+  <h2 class="subtitle is-5">Loans</h2>
+  <div id="form-labels-container" class="columns">
+    <span class="column is-3">Name</span>
+    <span class="column is-2">Amount Owed</span>
+    <span class="column is-2">Current Payment</span>
+    <span class="column is-2">Interest (APR %)</span>
     <span class="column is-2"></span>
   </div>
+
   <%= f.fields_for :loans do |loan| %>
     <%= render 'loan_fields', f: loan %>
   <% end %>
@@ -23,6 +27,7 @@
     <%= link_to_add_association f, :loans, class: 'button is-link' do %>
       <i class="fas fa-plus"></i>
     <% end %>
-    <%= f.submit class: 'button is-primary' %>
+    <%= f.submit 'Save', class: 'button is-primary' %>
+    <%= link_to 'Back', providers_path, class: 'button is-text' %>
   </div>
 <% end %>

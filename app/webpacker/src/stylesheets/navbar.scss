@@ -1,3 +1,18 @@
-.navbar {
+#mountain-navbar {
   margin-bottom: 1.5em;
+  background-color: $seafoam-green;
+
+  #navbar-logo {
+    font-size: 1.75em;
+    color: white;
+
+    #logo-container {
+      border: 2px solid white;
+      padding: 0 .25em;
+
+      svg {
+        color: $mountain-grey;
+      }
+    }
+  }
 }

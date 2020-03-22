@@ -1,0 +1,21 @@
+<%= form_with model: @user do |form| %>
+	<div class="text-field field">
+		<div class="control">
+			<%= form.text_field :email, type: 'email', class: 'input', placeholder: 'email' %>
+		</div>
+	</div>
+
+	<div class="password-field field">
+		<div class="control">
+			<%= form.password_field :password, type: 'password', class: 'input', placeholder: 'password' %>
+		</div>
+	</div>
+
+	<div class="submit-field">
+		<%= form.submit class: 'button is-primary' %>
+	</div>
+
+	<div class="other-links">
+		<%= link_to 'Login', sign_in_path %>
+	</div>
+<% end %>

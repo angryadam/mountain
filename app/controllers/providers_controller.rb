@@ -1,9 +1,10 @@
 class ProvidersController < ApplicationController
+  before_action :require_login
   before_action :set_provider, only: [:show, :edit, :update, :destroy]
 
   # GET /providers
   def index
-    @providers = Provider.all
+    @providers = current_user.providers
   end
 
   # GET /providers/1

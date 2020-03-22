@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap');
+
+// Set your brand colors
+$midnight-blue: #0A3A61;
+$blue-sapphire: #0E5681;
+$sea-blue: #146894;
+$seafoam-green: #089C7E;
+$crayola-yellow: #FDE88A;
+$middle-red: #EF946A;
+$chinese-orange: #E9683B;
+$background-grey: #ededed;
+$box-shadow-grey: #dedede;
+$diminished-grey: #b5b5b5;
+$mountain-grey: #363636;
+
+// Update Bulma's global variables
+$family-sans-serif: 'Sen', sans-serif;
+$grey-dark: $midnight-blue;
+$info: $sea-blue;
+$danger: $chinese-orange;
+$primary: $sea-blue;
+$link: $chinese-orange;
+$success: $seafoam-green;
+$warning: $crayola-yellow;
+$body-background-color: $background-grey;
+
+@mixin white-card-with-shadow {
+  padding: 2em;
+  background: white;
+  margin: 1em 0 0;
+  box-shadow: 3px 3px 1em $box-shadow-grey;
+  border-radius: 6px;
+}
+
+a.button.is-text {
+  color: $diminished-grey;
+}
