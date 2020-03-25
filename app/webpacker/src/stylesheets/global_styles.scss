@@ -24,6 +24,8 @@ $success: $seafoam-green;
 $warning: $crayola-yellow;
 $body-background-color: $background-grey;
 
+$header-and-foot-height: 274px;
+
 @mixin white-card-with-shadow {
   padding: 2em;
   background: white;
@@ -32,6 +34,15 @@ $body-background-color: $background-grey;
   border-radius: 6px;
 }
 
+a {
+  transition: color .2s ease;
+}
+
 a.button.is-text {
   color: $diminished-grey;
+}
+
+#main-container {
+  min-height: calc(100vh - #{$header-and-foot-height});
+  margin-bottom: 2em;
 }
