@@ -1,12 +1,12 @@
 <nav class="navbar" id="mountain-navbar" role="navigation">
 	<div class="container">
 		<div class="navbar-brand">
-			<a id='navbar-logo' class="navbar-item" href="/">
+			<%= link_to navbar_logo_path, id: 'navbar-logo', class: 'navbar-item' do %>
 				<span id="logo-container">
 					<i class="fas fa-mountain"></i>
 					Mountain
 				</span>
-			</a>
+			<% end %>
 			<a role="button" class="navbar-burger burger">
 				<span aria-hidden="true"></span>
 				<span aria-hidden="true"></span>
@@ -36,9 +36,6 @@
 							<%= button_to sign_out_path, method: :delete, class: 'button is-light' do %>
 								<i class="fas fa-sign-out-alt"></i>
 							<% end %>
-						<% else %>
-							<%= link_to 'Sign Up', sign_up_path, class: 'button is-primary' %>
-							<%= link_to 'Login', sign_in_path, class: 'button is-light' %>
 						<% end %>
 					</div>
 				</div>

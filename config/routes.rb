@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'providers#index'
   resources :providers
+  get 'intro', to: 'pages#intro'
 
   # Clearance Routes
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

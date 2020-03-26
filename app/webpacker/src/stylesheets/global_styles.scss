@@ -38,8 +38,13 @@ a {
   transition: color .2s ease;
 }
 
+.button {
+  transition: background-color .2s ease;
+}
+
 a.button.is-text {
   color: $diminished-grey;
+  text-decoration: none;
 }
 
 #main-container {

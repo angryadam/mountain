@@ -9,11 +9,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render 'layouts/navbar' %>
-    <div id="main-container" class="container">
-      <%= render 'layouts/flash_messages' %>
+    <% unless current_page?(intro_path) %>
+      <%= render 'layouts/navbar' %>
+      <div id="main-container" class="container">
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
+      </div>
+    <% else %>
       <%= yield %>
-    </div>
+    <% end %>
     <%= render 'layouts/footer' %>
   </body>
 </html>

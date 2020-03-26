@@ -15,4 +15,8 @@ module ApplicationHelper
     date.in_time_zone.strftime('%F')
   end
 
+  def navbar_logo_path
+    signed_in? ? root_path : intro_path
+  end
+
 end
