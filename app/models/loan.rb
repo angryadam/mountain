@@ -16,15 +16,15 @@ class Loan < ApplicationRecord
 
   private
 
-  def create_payoff_data(debt, payment, num_months=0, result=[[Time.zone.today.beginning_of_month, debt]])
-    total = monthly_total(debt: debt, payment: payment)
+  def create_payoff_data(debt, payment, num_months=1, result=[[Time.zone.today.beginning_of_month, debt]])
+    current_principle = monthly_total(debt: debt, payment: payment)
 
-    if total <= 0
+    if current_principle <= 0
       result << [Time.zone.now.beginning_of_month + num_months.months, 0]
       return result
     end
-    result << [Time.zone.now.beginning_of_month + num_months.months, total] if num_months > 0
-    create_payoff_data(total, payment, num_months + 1, result)
+    result << [Time.zone.now.beginning_of_month + num_months.months, current_principle]
+    create_payoff_data(current_principle, payment, num_months + 1, result)
   end
 
   def monthly_total(debt:, payment:)
