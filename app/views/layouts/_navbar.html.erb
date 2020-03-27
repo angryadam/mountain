@@ -20,24 +20,25 @@
 					<span class="navbar-item">
 						<%= link_to root_path, class: 'button is-secondary' do %>
 							<i class="fas fa-chart-area"></i>
+							<p>Home</p>
 						<% end %>
 					</span>
 					<span class="navbar-item">
 					<%= link_to(new_provider_path, class: 'button is-primary') do %>
 						<i class="fas fa-plus"></i>
+							<p>New</p>
 					<% end %>
 					</span>
 				<% end %>
 			</div>
 			<div class="navbar-end">
 				<div class="navbar-item">
-					<div class="buttons">
-						<% if signed_in? %>
-							<%= button_to sign_out_path, method: :delete, class: 'button is-light' do %>
-								<i class="fas fa-sign-out-alt"></i>
-							<% end %>
+					<% if signed_in? %>
+						<%= button_to sign_out_path, method: :delete, class: 'button is-light' do %>
+							<i class="fas fa-sign-out-alt"></i>
+							<p>Sign Out</p>
 						<% end %>
-					</div>
+					<% end %>
 				</div>
 			</div>
 		</div>

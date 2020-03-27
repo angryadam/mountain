@@ -14,4 +14,23 @@
       }
     }
   }
+
+  .navbar-item p {
+    margin-left: 1em;
+    display: none;
+  }
+
+  @media all and (max-width: 815px){
+    .navbar-menu {
+      text-align: right;
+      padding-right: 3em;
+
+      .navbar-item p {
+        display: block;
+      }
+      .navbar-item .button {
+        min-width: 30%;
+      }
+    }
+  }
 }
