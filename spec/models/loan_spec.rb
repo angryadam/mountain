@@ -165,8 +165,9 @@ describe Loan, type: :model do
 
       it 'should return properly formatted data' do
         expected = [[Time.zone.today.beginning_of_month, 12.0],
-                    [Time.zone.today.beginning_of_month + 1.months, 2.03],
-                    [Time.zone.today.beginning_of_month + 2.months, 0]]
+                    [Time.zone.today.beginning_of_month + 1.month, 7.02],
+                    [Time.zone.today.beginning_of_month + 2.months, 2.03],
+                    [Time.zone.today.beginning_of_month + 3.months, 0]]
         expect(easy_loan.payoff_data).to match_array(expected)
       end
 
