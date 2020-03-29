@@ -12,6 +12,13 @@
       svg {
         color: $mountain-grey;
       }
+
+      border: 3px solid $seafoam-green;
+      transition: border .3s ease;
+
+      &:hover {
+        border: 3px solid white;
+      }
     }
   }
 
@@ -20,7 +27,7 @@
     display: none;
   }
 
-  @media all and (max-width: 815px){
+  @media screen and (max-width: 1023px){
     .navbar-menu {
       text-align: right;
       padding-right: 3em;

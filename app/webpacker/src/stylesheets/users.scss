@@ -1,3 +1,5 @@
-#clearance .column.is-two-fifths {
-  @include white-card-with-shadow;
+#clearance.sign-up {
+  .column {
+    @include white-card-with-shadow;
+  }
 }

@@ -29,7 +29,6 @@ $header-and-foot-height: 274px;
 @mixin white-card-with-shadow {
   padding: 2em;
   background: white;
-  margin: 1em 0 0;
   box-shadow: 3px 3px 1em $box-shadow-grey;
   border-radius: 6px;
 }
@@ -49,5 +48,6 @@ a.button.is-text {
 
 #main-container {
   min-height: calc(100vh - #{$header-and-foot-height});
+  margin-top: 1em;
   margin-bottom: 2em;
 }

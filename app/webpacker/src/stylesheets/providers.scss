@@ -1,43 +1,73 @@
 #provider-index {
-  .provider-container {
-    @include white-card-with-shadow;
+  .payoff-container {
+    margin-bottom: 3em;
 
-    .title {
-      text-decoration: underline solid transparent;
-      transition: text-decoration 0.1s ease-in;
-      &:hover {
-        text-decoration: underline solid Currentcolor;
+    .provider-container {
+      @include white-card-with-shadow;
+      margin-top: 1em;
+
+      .title {
+        text-decoration: underline solid transparent;
+        transition: text-decoration 0.1s ease-in;
+        &:hover {
+          text-decoration: underline solid Currentcolor;
+        }
+      }
+
+      .level-item {
+        .provider-action-button, .provider-delete-button {
+          margin-left: 1em;
+
+          .fa-angle-up, .fa-angle-down {
+            font-size: 1.5em;
+          }
+        }
+
+        .provider-action-button {
+          display: none;
+        }
+      }
+    }
+
+    .payoff-info-container{
+      @include white-card-with-shadow;
+      margin-top: 1em;
+      height: 100%;
+      margin-left: 0.5em;
+
+      .payoff-name-title {
+        margin-bottom: 0.25em;
+      }
+
+      .payoff-date {
+        margin-bottom: 1em;
+      }
+    }
+
+    #no-data-container {
+      text-align: center;
+      margin-top: 10vh;
+
+      .is-three-fifths {
+        border: 5px $box-shadow-grey;
+        border-style: dashed none;
+      }
+
+      p {
+        font-size: 2.5em;
+        padding: 2em 0;
+        color: $box-shadow-grey
       }
     }
   }
 
-  .payoff-info-container{
-    @include white-card-with-shadow;
-    height: 100%;
-    margin-left: 0.5em;
-
-    .payoff-name-title {
-      margin-bottom: 0.25em;
+  @media screen and (max-width: 768px) {
+    .chart-container {
+      display: none;
     }
 
-    .payoff-date {
-      margin-bottom: 1em;
-    }
-  }
-
-  #no-data-container {
-    text-align: center;
-    margin-top: 10vh;
-
-    .is-three-fifths {
-      border: 5px $box-shadow-grey;
-      border-style: dashed none;
-    }
-
-    p {
-      font-size: 2.5em;
-      padding: 2em 0;
-      color: $box-shadow-grey
+    .provider-action-button {
+      display: block !important;
     }
   }
 }
@@ -55,7 +85,13 @@
     margin-bottom: 0.5em;
   }
 
-  #form-labels-container{
-    margin-bottom: 0;
+  hr {
+    margin: 1em 0;
+    display: none
+  }
+  @media screen and (max-width: 768px) {
+    hr {
+      display: block;
+    }
   }
 }

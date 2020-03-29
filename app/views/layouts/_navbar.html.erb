@@ -24,7 +24,7 @@
 						<% end %>
 					</span>
 					<span class="navbar-item">
-					<%= link_to(new_provider_path, class: 'button is-primary') do %>
+					<%= link_to new_provider_path, class: 'button is-primary' do %>
 						<i class="fas fa-plus"></i>
 							<p>New</p>
 					<% end %>
@@ -32,14 +32,24 @@
 				<% end %>
 			</div>
 			<div class="navbar-end">
-				<div class="navbar-item">
-					<% if signed_in? %>
+				<% if signed_in? %>
+					<div class="navbar-item">
 						<%= button_to sign_out_path, method: :delete, class: 'button is-light' do %>
 							<i class="fas fa-sign-out-alt"></i>
 							<p>Sign Out</p>
 						<% end %>
-					<% end %>
-				</div>
+					</div>
+				<% else %>
+					<div class="navbar-item">
+						<%= link_to sign_up_path, class: 'button is-primary' do %>
+							<i class="fas fa-user-plus"></i>
+							<p>Sign Up</p>
+						<% end %>
+					</div>
+					<div class="navbar-item">
+						<%= link_to 'Login', sign_in_path, class: 'button is-light' %>
+					</div>
+				<% end %>
 			</div>
 		</div>
 	</div>

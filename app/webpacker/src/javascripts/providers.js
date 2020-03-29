@@ -11,8 +11,8 @@ $(document).on('turbolinks:load', function() {
             confirmButtonText: 'Yes, delete it!',
             cancelButtonText: 'No, keep it'
         }).then((result) => {
-            let parentContainer = $(this).closest('.provider-container')
-            let headerText = $(this).closest('.provider-container').find('h4').text()
+            let parentContainer = $(this).closest('.payoff-container')
+            let headerText = parentContainer.find('h4').text()
             if (result.value) {
                 $.ajax({
                     url: $(this).attr("href"),
@@ -36,5 +36,16 @@ $(document).on('turbolinks:load', function() {
     document.body.addEventListener('ajax:error', function(event) {
         var message = event.detail[0]['message']
         Swal.fire('Oops...', message, 'error')
+    });
+
+    $(".provider-action-button").click(function(e) {
+        e.preventDefault()
+        var svg = $(this).find('svg')
+        if (svg.hasClass('fa-angle-down')) {
+            svg.removeClass('fa-angle-down').addClass('fa-angle-up')
+        } else {
+            svg.removeClass('fa-angle-up').addClass('fa-angle-down')
+        }
+        $(this).closest('.provider-container').find('.chart-container').slideToggle(200)
     });
 });

@@ -11,13 +11,6 @@
   <br>
 
   <h2 class="subtitle is-5">Loans</h2>
-  <div id="form-labels-container" class="columns">
-    <span class="column is-3">Name</span>
-    <span class="column is-2">Amount Owed</span>
-    <span class="column is-2">Current Payment</span>
-    <span class="column is-2">Interest (APR %)</span>
-    <span class="column is-2"></span>
-  </div>
 
   <%= f.fields_for :loans do |loan| %>
     <%= render 'loan_fields', f: loan %>
