@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  root 'providers#index'
   resources :providers
   get 'intro', to: 'pages#intro'
 
   # Clearance Routes
+  constraints Clearance::Constraints::SignedIn.new do
+    root to: "providers#index", as: :signed_in_root
+  end
+
+  constraints Clearance::Constraints::SignedOut.new do
+    root to: "pages#intro"
+  end
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
   resources :users, controller: "clearance/users", only: [:create] do
