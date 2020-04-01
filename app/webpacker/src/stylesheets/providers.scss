@@ -29,7 +29,7 @@
       }
     }
 
-    .payoff-info-container{
+    .payoff-info-container {
       @include white-card-with-shadow;
       margin-top: 1em;
       height: 100%;
@@ -43,21 +43,21 @@
         margin-bottom: 1em;
       }
     }
+  }
 
-    #no-data-container {
-      text-align: center;
-      margin-top: 10vh;
+  #no-data-container {
+    text-align: center;
+    margin-top: 10vh;
 
-      .is-three-fifths {
-        border: 5px $box-shadow-grey;
-        border-style: dashed none;
-      }
+    .is-three-fifths {
+      border: 5px $box-shadow-grey;
+      border-style: dashed none;
+    }
 
-      p {
-        font-size: 2.5em;
-        padding: 2em 0;
-        color: $box-shadow-grey
-      }
+    p {
+      font-size: 2.5em;
+      padding: 2em 0;
+      color: $box-shadow-grey
     }
   }
 

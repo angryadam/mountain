@@ -19,4 +19,8 @@ module ApplicationHelper
     signed_in? ? root_path : intro_path
   end
 
+  def signed_out_or_intro?
+    (current_page?(root_path) && signed_out?) || current_page?(intro_path)
+  end
+
 end
