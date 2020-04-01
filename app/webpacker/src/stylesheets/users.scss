@@ -1,5 +1,9 @@
 #clearance.sign-up {
   .column {
     @include white-card-with-shadow;
+
+    .other-links {
+      margin-top: 2em;
+    }
   }
 }

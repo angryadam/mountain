@@ -15,10 +15,6 @@ module ApplicationHelper
     date.in_time_zone.strftime('%F')
   end
 
-  def navbar_logo_path
-    signed_in? ? root_path : intro_path
-  end
-
   def signed_out_or_intro?
     (current_page?(root_path) && signed_out?) || current_page?(intro_path)
   end
