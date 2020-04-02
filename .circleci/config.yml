@@ -1,5 +1,8 @@
 version: 2
 
+orbs:
+  heroku: circleci/heroku@1.0.1
+
 references:
   default_docker_ruby_executor: &default_docker_ruby_executor
     image: circleci/ruby:2.6.5-node-browsers
@@ -16,8 +19,10 @@ references:
 
 jobs:
   build:
+    parallelism: 3
     docker:
       - *default_docker_ruby_executor
+      - *postgres
     steps:
       - checkout
       # Which version of bundler?
@@ -37,7 +42,6 @@ jobs:
           key: mountain-app-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-            -
       # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
@@ -51,28 +55,9 @@ jobs:
           key: mountain-app-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-  test:
-    parallelism: 3
-    docker:
-      - *default_docker_ruby_executor
-      - *postgres
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-      - run:
-          name: Bundle Install
-          command: bundle check || bundle install
-      - restore_cache:
-          keys:
-            - mountain-app-yarn-{{ checksum "yarn.lock" }}
-            - mountain-app-yarn-
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
@@ -90,9 +75,12 @@ jobs:
 
 workflows:
   version: 2
-  build_and_test:
+  heroku_deploy:
     jobs:
       - build
-      - test:
+      - heroku/deploy-via-git:
           requires:
-            - build
+            - build # only run deploy-via-git job if the build job has completed
+          filters:
+            branches:
+              only: master # only run deploy-via-git job on master branch
