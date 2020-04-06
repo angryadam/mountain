@@ -14,6 +14,10 @@ class Loan < ApplicationRecord
     create_payoff_data(principle, payment)
   end
 
+  def payoff_date
+    payoff_data.last.first
+  end
+
   private
 
   def create_payoff_data(debt, payment, num_months=1, result=[[Time.zone.today.beginning_of_month, debt]])

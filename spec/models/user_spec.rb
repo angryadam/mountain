@@ -32,4 +32,24 @@ describe User, type: :model do
 
 	end
 
+	context '#final_payoff_info' do
+
+		let(:loan) { user.providers.first.loans.first }
+
+		it 'should return name and date for the last loan to be paid off' do
+			loan.update(principle: 3000)
+			expect(user.final_payoff_info).to eq({ name: loan.name,
+			                                       date: Time.zone.today.beginning_of_month + 44.months })
+		end
+
+	end
+
+	context '#total_amount_owed' do
+
+		it 'should return summed principle amount for all loans' do
+			expect(user.total_amount_owed).to eq(4000)
+		end
+
+	end
+
 end

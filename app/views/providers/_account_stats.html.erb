@@ -1,0 +1,28 @@
+<div id="account-stats" class="level">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Providers</p>
+      <p class="title"><%= current_user.providers.size %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Loans</p>
+      <p class="title"><%= current_user.loans.size %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Total Owed</p>
+      <p class="title"><%= number_to_currency(current_user.total_amount_owed, precision: 0) %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Last Payoff Info</p>
+      <p class="title"><%= format_last_loan_data(name: current_user.final_payoff_info[:name],
+                                                 date: current_user.final_payoff_info[:date])%></p>
+    </div>
+  </div>
+</div>
+<br>

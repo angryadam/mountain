@@ -85,5 +85,28 @@ describe Provider, type: :model do
 
 		end
 
-	end
+  end
+
+  context '#payoff_date' do
+
+    let(:loan) { provider.loans.first }
+
+	  before(:each) { provider.loans.update(principle: 12, interest: 2.0, payment: 5) }
+
+    it 'should return name and date for the last loan to be paid off' do
+      loan.update(principle: 24)
+      expect(provider.payoff_date).to eq({ name: loan.name,
+                                           date: Time.zone.today.beginning_of_month + 5.months })
+    end
+
+  end
+
+  context '#total_amount_owed' do
+
+    it 'should return summed principle amount for all loans' do
+      expect(provider.total_amount_owed).to eq(2000)
+    end
+
+  end
+
 end

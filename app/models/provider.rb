@@ -17,6 +17,19 @@ class Provider < ApplicationRecord
 		end
 	end
 
+	def payoff_date
+		loans_payoff_dates = loans.map { |loan| { name: loan.name, date: loan.payoff_date } }
+
+		final_date = {}
+		loans_payoff_dates.each { |date_data| final_date = date_data if date_data[:date] > (final_date[:date] || Time.zone.now) }
+
+		final_date
+	end
+
+	def total_amount_owed
+		loans.sum(&:principle)
+	end
+
 	private
 
 	def loans_per_provider_limit

@@ -175,4 +175,14 @@ describe Loan, type: :model do
 
   end
 
+  context '#payoff_date' do
+
+    let!(:easy_loan) { FactoryBot.create(:loan, principle: 12, interest: 2.0, payment: 5.0) }
+
+    it 'should return the date when loan is paid off' do
+      expect(easy_loan.payoff_date).to eq(Time.zone.today.beginning_of_month + 3.months)
+    end
+
+  end
+
 end

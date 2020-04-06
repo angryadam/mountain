@@ -12,7 +12,7 @@ module ApplicationHelper
   def format_date(date)
     return unless date
 
-    date.in_time_zone.strftime('%F')
+    date.in_time_zone.strftime('%b %Y')
   end
 
   def signed_out_or_intro?

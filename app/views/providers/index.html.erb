@@ -1,5 +1,6 @@
 <div id="provider-index">
 	<% if @providers.present? %>
+		<%= render 'account_stats' %>
 		<%= render 'provider_charts' %>
 	<% else %>
 		<%= render 'no_data' %>

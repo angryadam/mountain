@@ -1,4 +1,18 @@
 #provider-index {
+
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #account-stats {
+    animation: fadeInAnimation ease 2s;
+  }
+
   .payoff-container {
     margin-bottom: 3em;
 
